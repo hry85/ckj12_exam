@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Create note</title>
+<link rel="stylesheet" href="/styles/form.css">
+</head>
+<body>
+	<div id="send_form">
+		<h1>New letter</h1>
+       
+		<form th:name="letter" action="/email/send" method="post">
+		   
+		   <p>
+				<input type="text" th:name="user" th:value="${user.email}">from
+			<p>
+				<input type="text" th:name="to" placeholder="Enter email send to">to
+			<p>
+				<textarea rows="5" cols="" th:name="text" placeholder="Enter message">
+	</textarea>
+	
+	<p>
+				<input type="submit" value="Send letter">
+		</form>
+	</div>
+</body>
+</html>

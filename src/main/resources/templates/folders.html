@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Notes list</title>
+<link rel="stylesheet" href="/styles/notes.css">
+<link rel="stylesheet" href="/styles/navbar.css">
+</head>
+<body>
+
+	<div th:insert="home :: navbar"></div>
+
+	<div class="cnt">
+		<div class="search">
+			<form action="/folders/search">
+				<input name="word" type="text" placeholder="Search..."
+					autofocus="autofocus">
+				<button type="submit">
+					<img src="/image/search.png">
+				</button>
+			</form>
+		</div>
+		<h1>Folders</h1>
+		<a href="/folders/create">Create new folder</a>
+		<div class="note" th:each="folder : ${folders}">
+			<a title="Open" th:href="@{/notes/all/{id}(id=${folder.id})}">Open</a> 
+			<a title="Delete"
+				th:href="@{/folders/delete/{id}(id=${folder.id})}" class="option"
+				onclick="return confirm('Are you sure?')"> <img
+				src="/image/delete.png"></a> 
+			
+			<div class="note_name">
+				<span th:text="${folder.name}"></span>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
